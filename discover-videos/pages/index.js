@@ -12,7 +12,7 @@ export default function Home() {
 
 			<h1>Netflix</h1>
 
-			<Banner />
+			<Banner title='Clifford the Red Dog' subTitle="A very cute dog" imgUrl="/static/clifford.jpg" />
 
 			{/* <NavBar />
 
