@@ -15,7 +15,7 @@ export default function Home() {
 			<Banner
 				title='Clifford the Red Dog'
 				subTitle="A very cute dog"
-				imgUrl="/static/clifford.jpg"
+				imgUrl="/static/clifford.webp"
 			/>
 
 			{/* <NavBar />
