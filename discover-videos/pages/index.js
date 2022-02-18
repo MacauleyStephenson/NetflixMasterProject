@@ -12,7 +12,7 @@ export default function Home() {
 			</Head>
 
 
-			<NavBar />
+			<NavBar Username="Macauley@JS.com" />
 
 			<Banner
 				title='Clifford the Red Dog'
