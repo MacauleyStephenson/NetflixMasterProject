@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+import NavBar from '../components/nav/navbar'
 import Banner from "../components/banner/banner"
 
 export default function Home() {
@@ -10,7 +11,8 @@ export default function Home() {
 				<title>Netflix</title>
 			</Head>
 
-			<h1>Netflix</h1>
+
+			<NavBar />
 
 			<Banner
 				title='Clifford the Red Dog'
@@ -18,7 +20,7 @@ export default function Home() {
 				imgUrl="/static/clifford.webp"
 			/>
 
-			{/* <NavBar />
+			{/*
 
 
 			<Card /> */}
