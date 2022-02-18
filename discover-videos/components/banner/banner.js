@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './banner.module.css';
 
 const Banner = (props) => {
@@ -21,7 +22,9 @@ const Banner = (props) => {
 					<h3 className={styles.subTitle}>{subTitle}</h3>
 
 					<div className={styles.playBtnWrapper}>
-						<button className={styles.btnWithIcon} onClick={handleOnPlay}><span className={styles.playText}>Play</span></button>
+						<button className={styles.btnWithIcon} onClick={handleOnPlay}>
+							<Image src='/static/playArrow.svg' alt="Play icon" width="32px" height="32px" />
+							<span className={styles.playText}>Play</span></button>
 					</div>
 
 				</div>
