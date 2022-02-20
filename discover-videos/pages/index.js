@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 
 import NavBar from '../components/nav/navbar'
 import Banner from "../components/banner/banner"
+import Card from "../components/card/card";
 
 export default function Home() {
 	return (
@@ -20,10 +21,7 @@ export default function Home() {
 				imgUrl="/static/clifford.webp"
 			/>
 
-			{/*
-
-
-			<Card /> */}
+			<Card />
 
 		</div>
 	)
