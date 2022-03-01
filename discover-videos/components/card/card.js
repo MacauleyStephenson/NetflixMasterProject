@@ -1,12 +1,21 @@
 import Image from "next/image";
+import styles from './card.module.css';
 
 const Card = (props) => {
 
 	const { imgUrl, size } = props;
-	return <div>
-		Card
-		<Image src={imgUrl} alt="image" width='300px' height='300' />
-	</div>;
+
+	const classMap = {
+		'large': styles.lgItem,
+		'medium': styles.mdItem,
+		'small': styles.smItem,
+	}
+	return (
+		<div className={classMap[size]}>
+			Card
+			<Image src={imgUrl} alt="image" layout="fill" />
+		</div>
+	);
 };
 
 export default Card
