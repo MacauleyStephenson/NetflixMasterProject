@@ -11,9 +11,15 @@ const Card = (props) => {
 		'small': styles.smItem,
 	}
 	return (
-		<div className={classMap[size]}>
+		<div className={styles.container}>
 			Card
-			<Image src={imgUrl} alt="image" layout="fill" />
+			<div className={classMap[size]}>
+				<Image
+					src={imgUrl}
+					alt="image"
+					layout="fill"
+					className={styles.cardImg} />
+			</div>
 		</div>
 	);
 };
