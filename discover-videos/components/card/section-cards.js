@@ -1,11 +1,17 @@
 import Card from "./card";
-const SectionCards = () => {
-	return <section>
-		<h2>Disney</h2>
-		<div>
-			<Card imgUrl='/static/clifford.webp' size="large" />
-		</div>
-	</section>;
+
+import styles from "./section-cards.module.css"
+
+const SectionCards = (props) => {
+	const { title } = props;
+	return (
+		<section className={styles.container}>
+			<h2 className={styles.title}>{title}</h2>
+			<div className={styles.cardWrapper}>
+				<Card imgUrl='/static/clifford.webp' size="large" />
+			</div>
+		</section>
+	);
 };
 
 export default SectionCards;

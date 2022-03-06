@@ -21,7 +21,7 @@ export default function Home() {
 				imgUrl="/static/clifford.webp"
 			/>
 
-			<SectionCards />
+			<SectionCards title='Disney' />
 
 			<Card imgUrl='/static/clifford.webp' size="large" />
 			<Card size="medium" />
