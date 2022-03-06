@@ -23,9 +23,6 @@ export default function Home() {
 
 			<SectionCards title='Disney' />
 
-			<Card imgUrl='/static/clifford.webp' size="large" />
-			<Card size="medium" />
-			<Card imgUrl='/static/clifford.webp' size="small" />
 
 		</div>
 	)
