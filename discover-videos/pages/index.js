@@ -7,6 +7,18 @@ import Card from "../components/card/card";
 import SectionCards from "../components/card/section-cards";
 
 export default function Home() {
+
+	const disneyVideos = [
+		{
+			imgUrl: "/static/clifford.webp"
+		},
+		{
+			imgUrl: "/static/clifford.webp"
+		},
+		{
+			imgUrl: "/static/clifford.webp"
+		},
+	]
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -21,7 +33,7 @@ export default function Home() {
 				imgUrl="/static/clifford.webp"
 			/>
 			<div className={styles.sectionWrapper}>
-				<SectionCards title='Disney' />
+				<SectionCards title="Disney" videos={disneyVideos} />
 			</div>
 
 		</div>
