@@ -33,7 +33,8 @@ export default function Home() {
 				imgUrl="/static/clifford.webp"
 			/>
 			<div className={styles.sectionWrapper}>
-				<SectionCards title="Disney" videos={disneyVideos} />
+				<SectionCards title="Disney" videos={disneyVideos} size={"large"} />
+				<SectionCards title="Disney" videos={disneyVideos} size={"medium"} />
 			</div>
 
 		</div>
