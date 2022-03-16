@@ -28,20 +28,20 @@ export default function Home({ disneyVideos, travelVideos, productivityVideos })
 				<title>Netflix</title>
 			</Head>
 
-
-			<NavBar Username="Macauley@JS.com" />
-			<Banner
-				title='Clifford the Red Dog'
-				subTitle="A very cute dog"
-				imgUrl="/static/clifford.webp"
-			/>
-			<div className={styles.sectionWrapper}>
-				<SectionCards title="Disney" videos={disneyVideos} size={"large"} />
-				<SectionCards title="Travel" videos={travelVideos} size={"small"} />
-				<SectionCards title="Productivity" videos={productivityVideos} size={"medium"} />
-				<SectionCards title="Popular" videos={disneyVideos} size={"small"} />
+			<div className={styles.main}>
+				<NavBar Username="Macauley@JS.com" />
+				<Banner
+					title='Clifford the Red Dog'
+					subTitle="A very cute dog"
+					imgUrl="/static/clifford.webp"
+				/>
+				<div className={styles.sectionWrapper}>
+					<SectionCards title="Disney" videos={disneyVideos} size={"large"} />
+					<SectionCards title="Travel" videos={travelVideos} size={"small"} />
+					<SectionCards title="Productivity" videos={productivityVideos} size={"medium"} />
+					<SectionCards title="Popular" videos={disneyVideos} size={"small"} />
+				</div>
 			</div>
-
 		</div>
 	)
 }
