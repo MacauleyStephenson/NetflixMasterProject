@@ -36,8 +36,7 @@ const Login = () => {
 
 					<p className={styles.userMsg}></p>
 
-					<button onClick={handleLoginwithEmail} className={styles.loginbtn}>Sign In
-					</button>
+					<button onClick={handleLoginwithEmail} className={styles.loginBtn}>Sign In</button>
 				</div>
 			</main>
 		</div>
