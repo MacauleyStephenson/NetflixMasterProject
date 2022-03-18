@@ -1,17 +1,32 @@
 import Head from "next/head";
 import Image from "next/image";
 
+import { useState } from "react";
+
 import styles from "../styles/login.module.css";
 
 const Login = () => {
 
+	const [email, setEmail] = useState('');
+	const [userMsg, setUserMsg] = useState("");
+
 	const handleOnChangeEmail = (e) => {
+		setUserMsg("");
 		console.log("event", e);
-	}
+		const email = e.target.value;
+		setEmail(email);
+	};
 
 	const handleLoginwithEmail = (e) => {
 		console.log("Hi button");
 		e.preventDefault();
+
+		if (email) {
+			//route to dashboard
+		} else {
+			//show user message
+			setUserMsg('Enter a valid email address');
+		}
 	}
 	return (
 		<div className={styles.container}>
@@ -43,7 +58,7 @@ const Login = () => {
 						onChange={handleOnChangeEmail}
 					/>
 
-					<p className={styles.userMsg}></p>
+					<p className={styles.userMsg}>{userMsg}</p>
 
 					<button
 						onClick={handleLoginwithEmail}
