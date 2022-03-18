@@ -5,6 +5,10 @@ import styles from "../styles/login.module.css";
 
 const Login = () => {
 
+	const handleOnChangeEmail = (e) => {
+		console.log("event", e);
+	}
+
 	const handleLoginwithEmail = (e) => {
 		console.log("Hi button");
 		e.preventDefault();
@@ -32,11 +36,18 @@ const Login = () => {
 			<main className={styles.main}>
 				<div className={styles.mainWrapper}>
 					<h1 className={styles.signinHeader}>Sign In</h1>
-					<input type="text" placeholder="Email address" className={styles.emailInput} />
+					<input
+						type="text"
+						placeholder="Email address"
+						className={styles.emailInput}
+						onChange={handleOnChangeEmail}
+					/>
 
 					<p className={styles.userMsg}></p>
 
-					<button onClick={handleLoginwithEmail} className={styles.loginBtn}>Sign In</button>
+					<button
+						onClick={handleLoginwithEmail}
+						className={styles.loginBtn}>Sign In</button>
 				</div>
 			</main>
 		</div>
