@@ -22,12 +22,18 @@ const Login = () => {
 		e.preventDefault();
 
 		if (email) {
-			//route to dashboard
+			if (email === "macauleymmx@gmail.com") {
+				//route to dashboard
+				console.log("route to dashboard");
+			} else {
+				//show user message
+				setUserMsg('Something went wrong logging in');
+			}
 		} else {
-			//show user message
-			setUserMsg('Enter a valid email address');
+			//set user message
+			setUserMsg("Enter a valid email address");
 		}
-	}
+	};
 	return (
 		<div className={styles.container}>
 			<Head>
