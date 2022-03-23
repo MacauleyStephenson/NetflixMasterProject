@@ -1,118 +1,78 @@
-import { useEffect, useState } from "react";
-
-import { useRouter } from "next/router";
 import Head from "next/head";
-import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
-import { magic } from "../lib/magic-client";
+import Banner from "../components/banner/banner";
+import NavBar from "../components/nav/navbar";
 
-import styles from "../styles/Login.module.css";
+import SectionCards from "../components/card/section-cards";
 
-const Login = () => {
-	const [email, setEmail] = useState("");
-	const [userMsg, setUserMsg] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
+import {
+	getVideos,
+	getPopularVideos,
+	getWatchItAgainVideos,
+} from "../lib/videos";
+import useRedirectUser from "../utils/redirectUser";
 
-	const router = useRouter();
+export async function getServerSideProps(context) {
+	const { userId, token } = await useRedirectUser(context);
+	const watchItAgainVideos = await getWatchItAgainVideos(userId, token);
 
-	useEffect(() => {
-		const handleComplete = () => {
-			setIsLoading(false);
-		};
-		router.events.on("routeChangeComplete", handleComplete);
-		router.events.on("routeChangeError", handleComplete);
+	const disneyVideos = await getVideos("disney trailer");
+	const productivityVideos = await getVideos("Productivity");
 
-		return () => {
-			router.events.off("routeChangeComplete", handleComplete);
-			router.events.off("routeChangeError", handleComplete);
-		};
-	}, [router]);
+	const travelVideos = await getVideos("indie music");
 
-	const handleOnChangeEmail = (e) => {
-		setUserMsg("");
-		const email = e.target.value;
-		setEmail(email);
+	const popularVideos = await getPopularVideos();
+	return {
+		props: {
+			disneyVideos,
+			travelVideos,
+			productivityVideos,
+			popularVideos,
+			watchItAgainVideos,
+		},
 	};
+}
 
-	const handleLoginWithEmail = async (e) => {
-		e.preventDefault();
-
-		if (email) {
-			// log in a user by their email
-			try {
-				setIsLoading(true);
-
-				const didToken = await magic.auth.loginWithMagicLink({
-					email,
-				});
-				if (didToken) {
-					const response = await fetch("/api/login", {
-						method: "POST",
-						headers: {
-							Authorization: `Bearer ${didToken}`,
-							"Content-Type": "application/json",
-						},
-					});
-
-					const loggedInResponse = await response.json();
-					if (loggedInResponse.done) {
-						router.push("/");
-					} else {
-						setIsLoading(false);
-						setUserMsg("Something went wrong logging in");
-					}
-				}
-			} catch (error) {
-				// Handle errors if required!
-				console.error("Something went wrong logging in", error);
-				setIsLoading(false);
-			}
-		} else {
-			// show user message
-			setIsLoading(false);
-			setUserMsg("Enter a valid email address");
-		}
-	};
+export default function Home({
+	disneyVideos,
+	travelVideos,
+	productivityVideos,
+	popularVideos,
+	watchItAgainVideos,
+}) {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>Netflix SignIn</title>
+				<title>Netflix</title>
+				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<header className={styles.header}>
-				<div className={styles.headerWrapper}>
-					<a className={styles.logoLink} href="/">
-						<div className={styles.logoWrapper}>
-							<Image
-								src="/static/netflix.svg"
-								alt="Netflix logo"
-								width="128px"
-								height="34px"
-							/>
-						</div>
-					</a>
-				</div>
-			</header>
+			<div className={styles.main}>
+				<NavBar username="ankita@ank.com" />
+				<Banner
+					videoId="4zH5iYM4wJo"
+					title="Clifford the red dog"
+					subTitle="a very cute dog"
+					imgUrl="/static/clifford.webp"
+				/>
 
-			<main className={styles.main}>
-				<div className={styles.mainWrapper}>
-					<h1 className={styles.signinHeader}>Sign In</h1>
-
-					<input
-						type="text"
-						placeholder="Email address"
-						className={styles.emailInput}
-						onChange={handleOnChangeEmail}
+				<div className={styles.sectionWrapper}>
+					<SectionCards title="Disney" videos={disneyVideos} size="large" />
+					<SectionCards
+						title="Watch it again"
+						videos={watchItAgainVideos}
+						size="small"
 					/>
-
-					<p className={styles.userMsg}>{userMsg}</p>
-					<button onClick={handleLoginWithEmail} className={styles.loginBtn}>
-						{isLoading ? "Loading..." : "Sign In"}
-					</button>
+					<SectionCards title="Travel" videos={travelVideos} size="small" />
+					<SectionCards
+						title="Productivity"
+						videos={productivityVideos}
+						size="medium"
+					/>
+					<SectionCards title="Popular" videos={popularVideos} size="small" />
 				</div>
-			</main>
+			</div>
 		</div>
 	);
-};
-
-export default Login;
+}
