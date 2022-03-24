@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css';
 
 import Banner from '../components/banner/banner';
-import
+import NavBar from '../components/nav/navbar';
 
 export default function Home() {
 	return (
@@ -11,10 +11,10 @@ export default function Home() {
 			<Head>
 				<title>Netflix</title>
 			</Head>
-			<h1>Netflix</h1>
 
+			<NavBar username="MacauleyS@gmail.com" />
 			<Banner title='Clifford the dog' subTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
-			<Navbar />
+
 
 			{/*
 			<Card /> */}
