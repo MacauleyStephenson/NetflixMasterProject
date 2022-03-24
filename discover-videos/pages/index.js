@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
 
-import Banner from '../components/banner/banner'
+import Banner from '../components/banner/banner';
 
 export default function Home() {
 	return (
@@ -12,7 +12,7 @@ export default function Home() {
 			</Head>
 			<h1>Netflix</h1>
 
-			<Banner title='Clifford the dog' subtTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
+			<Banner title='Clifford the dog' subTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
 
 			{/* <Navbar />
 			<Card /> */}
