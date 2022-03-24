@@ -12,10 +12,10 @@ export default function Home() {
 			</Head>
 			<h1>Netflix</h1>
 
-			<Banner title='Clifford the dog' />
+			<Banner title='Clifford the dog' subtTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
 
 			{/* <Navbar />
 			<Card /> */}
 		</div>
-	)
+	);
 }
