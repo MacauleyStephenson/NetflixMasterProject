@@ -15,7 +15,7 @@ const SectionCards = (props) => {
 							<a>
 								<Card
 									id={idx}
-									imgUrl={video.imgUrl}
+									imgUrl={"/static.clifford.webp"}
 									size={size}
 									shouldScale={shouldScale}
 								/>

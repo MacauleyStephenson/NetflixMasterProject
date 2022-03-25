@@ -34,21 +34,19 @@ const Card = (props) => {
 	};
 
 	return (
-		<div>Card
-			<div className={styles.container}>
-				<motion.div
-					className={cls(styles.imgMotionWrapper, classMap[size])}
-					{...shouldHover}
-				>
-					<Image
-						src={imgSrc}
-						alt="image"
-						layout="fill"
-						onError={handleOnError}
-						className={styles.cardImg}
-					/>
-				</motion.div>
-			</div>
+		<div className={styles.container}>
+			<motion.div
+				className={cls(styles.imgMotionWrapper, classMap[size])}
+				{...shouldHover}
+			>
+				<Image
+					src={imgSrc}
+					alt="image"
+					layout="fill"
+					onError={handleOnError}
+					className={styles.cardImg}
+				/>
+			</motion.div>
 		</div>
 	);
 };
