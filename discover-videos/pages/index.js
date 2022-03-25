@@ -13,7 +13,7 @@ export default function Home() {
 			</Head>
 
 			<NavBar username="MacauleyS@gmail.com" />
-			<Banner title='Clifford the dog' subTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
+			<Banner title='Clifford the Red Dog' subTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
 
 
 			{/*
