@@ -19,8 +19,10 @@ export default function Home() {
 			<NavBar username="MacauleyS@gmail.com" />
 			<Banner title='Clifford the Red Dog' subTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
 
-			<SectionCards />
+			<div className={styles.sectionWrapper}>
+				<SectionCards title="Disney" />
 
+			</div>
 		</div>
 	);
 }
