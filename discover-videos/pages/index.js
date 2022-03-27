@@ -10,6 +10,21 @@ import SectionCards from '../components/card/section-cards';
 
 
 export default function Home() {
+
+	const disneyVideos = [
+		{
+			imgUrl: '/static/clifford.webp',
+		},
+		{
+			imgUrl: '/static/clifford.webp',
+		},
+		{
+			imgUrl: '/static/clifford.webp',
+		},
+		{
+			imgUrl: '/static/clifford.webp',
+		},
+	]
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -17,11 +32,21 @@ export default function Home() {
 			</Head>
 
 			<NavBar username="MacauleyS@gmail.com" />
-			<Banner title='Clifford the Red Dog' subTitle="A very cute dog!" imgUrl="/static/clifford.webp" />
-
+			<Banner
+				title='Clifford the Red Dog'
+				subTitle="A very cute dog!"
+				imgUrl="/static/clifford.webp" />
 			<div className={styles.sectionWrapper}>
-				<SectionCards title="Disney" />
-
+				<SectionCards
+					title="Disney"
+					videos={disneyVideos}
+					size="large"
+				/>
+				<SectionCards
+					title="Disney"
+					videos={disneyVideos}
+					size="medium"
+				/>
 			</div>
 		</div>
 	);
