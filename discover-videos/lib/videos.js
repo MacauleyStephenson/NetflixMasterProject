@@ -38,3 +38,11 @@ export const getVideos = (searchQuery) => {
 	const URL = `search?part=snippet&q=${searchQuery}&type=video`;
 	return getCommonVideos(URL);
 };
+
+export const getPopularVideos = () => {
+	const URL =
+		"videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US";
+
+	//videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc
+	return getCommonVideos(URL);
+};
