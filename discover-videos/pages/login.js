@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import Head from "next/head";
 import styles from "../styles/Login.module.css";
@@ -21,11 +22,16 @@ const Login = () => {
 		e.preventDefault();
 
 		if (email) {
-			//route to dashboard
+			if (email == 'macauleymmx@gmail.com') {
+				//route to dashboard
+				console.log("route to dashboard");
+			} else {
+				setUserMsg('Something went wrong logging in');
+			}
 		} else {
 			//show user message
 			setUserMsg("Enter a valid email address");
-		};
+		}
 	};
 
 
@@ -37,37 +43,40 @@ const Login = () => {
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
 
-			<header>
-				<a className={styles.logoLink} href="/">
-					<div className={styles.logoWrapper}>
-						<Image
-							src="/static/netflix.svg"
-							alt="Netflix logo"
-							width="128px"
-							height="34px"
-						/>
-					</div>
-				</a>
-
-				<main className={styles.main}>
-					<div className={styles.mainWrapper}>
-						<h1 className={styles.signinHeader}>Sign In</h1>
-						<input
-							type="text"
-							placeholder="Email address"
-							className={styles.emailInput}
-							onChange={handleOnChangeEmail}
-						/>
-
-						<p className={styles.userMsg}>{userMsg}</p>
-						<button
-							onClick={handleLoginWithEmail}
-							className={styles.loginBtn}>
-							Sign In
-						</button>
-					</div>
-				</main>
+			<header className={styles.header}>
+				<div className={styles.headerWrapper}>
+					<a className={styles.logoLink} href="/">
+						<div className={styles.logoWrapper}>
+							<Image
+								src="/static/netflix.svg"
+								alt="Netflix logo"
+								width="128px"
+								height="34px"
+							/>
+						</div>
+					</a>
+				</div>
 			</header>
+
+			<main className={styles.main}>
+				<div className={styles.mainWrapper}>
+					<h1 className={styles.signinHeader}>Sign In</h1>
+					<input
+						type="text"
+						placeholder="Email address"
+						className={styles.emailInput}
+						onChange={handleOnChangeEmail}
+					/>
+
+					<p className={styles.userMsg}>{userMsg}</p>
+					<button
+						onClick={handleLoginWithEmail}
+						className={styles.loginBtn}>
+						Sign In
+					</button>
+				</div>
+			</main>
+
 		</div>
 	);
 };
