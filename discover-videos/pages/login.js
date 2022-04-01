@@ -9,6 +9,8 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [userMsg, setUserMsg] = useState("");
 
+	const router = useRouter();
+
 	const handleOnChangeEmail = (e) => {
 		setUserMsg("")
 		console.log("event", e);
@@ -23,8 +25,7 @@ const Login = () => {
 
 		if (email) {
 			if (email == 'macauleymmx@gmail.com') {
-				//route to dashboard
-				console.log("route to dashboard");
+				router.push("/");
 			} else {
 				setUserMsg('Something went wrong logging in');
 			}
