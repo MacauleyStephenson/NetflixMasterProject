@@ -37,7 +37,7 @@ const Login = () => {
 
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<Head>
 				<title>Login</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
