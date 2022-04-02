@@ -27,12 +27,14 @@ const Login = () => {
 
 		if (email) {
 			if (email == 'macauleymmx@gmail.com') {
-				// router.push("/");
 				try {
 					const didToken = await magic.auth.loginWithMagicLink({
 						email,
 					});
-					console.log({ didToken })
+					console.log({ didToken });
+					if (didToken) {
+						router.push('/')
+					}
 				} catch (error) {
 					console.log("something went wrong logging in", error);
 				}
