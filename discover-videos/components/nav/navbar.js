@@ -11,15 +11,17 @@ import { magic } from "../../lib/magic-client";
 
 const NavBar = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
+	const [username, setUsername] = useState('');
 
 	const router = useRouter();
 
 	useEffect(async () => {
 		try {
-			const { email, publicAddress } = await magic.user.getMetadata();
-			console.log({ email });
+			const { email } = await magic.user.getMetadata();
+			if (email) {
+				setUsername(email);
+			}
 		} catch (error) {
-			// Handle errors if required
 			console.log('Error retrieving email', error);
 		}
 	}, []);
@@ -63,7 +65,7 @@ const NavBar = () => {
 					<div>
 						<button className={styles.usernameBtn}
 							onClick={handleShowDropdown}>
-							<p>username</p>
+							<p>{username}</p>
 							{/* Expand more icon */}
 							<Image
 								src={"/static/expand_more.svg"}
