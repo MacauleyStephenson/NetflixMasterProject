@@ -27,19 +27,34 @@ const NavBar = () => {
 	}, []);
 
 	const handleOnClickHome = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		router.push("/");
 	};
 
 	const handleOnClickMyList = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		router.push("/browse/my-list");
 	};
 
 	const handleShowDropdown = (e) => {
 		e.preventDefault();
 		setShowDropdown(!showDropdown);
-	}
+	};
+
+	const handleSignout = async (e) => {
+		e.preventDefault();
+
+		try {
+			await magic.user.logout();
+			console.log(await magic.user.isLoggedIn()); // => `false`
+			router.push('/login');
+		} catch (error) {
+			console.log('Error logging out', error);
+			router.push('/login');
+		};
+	};
+
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.wrapper}>
@@ -78,11 +93,9 @@ const NavBar = () => {
 						{showDropdown && (
 							<div className={styles.navDropdown}>
 								<div>
-									<Link href="/login">
-										<a className={styles.linkName}>
-											Sign Out
-										</a>
-									</Link>
+									<a className={styles.linkName} onClick={handleSignout}>
+										Sign Out
+									</a>
 									<div className={styles.lineWrapper}></div>
 								</div>
 							</div>
