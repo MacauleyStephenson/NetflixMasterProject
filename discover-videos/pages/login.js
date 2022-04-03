@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Head from "next/head";
@@ -13,6 +13,19 @@ const Login = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const router = useRouter();
+
+	useEffect(() => {
+		const handleComplete = () => {
+			setIsLoading(false);
+		};
+		router.events.on('routeChangeComplete', handleComplete);
+		router.events.on('routeChangeError', handleComplete);
+
+		return () => {
+			router.events.off('routeChangeComplete', handleComplete);
+			router.events.off('routeChangeError', handleComplete);
+		}
+	}, [router])
 
 	const handleOnChangeEmail = (e) => {
 		setUserMsg("")
@@ -37,7 +50,6 @@ const Login = () => {
 					});
 					console.log({ didToken });
 					if (didToken) {
-						setIsLoading(false);
 						router.push("/");
 					}
 				} catch (error) {
