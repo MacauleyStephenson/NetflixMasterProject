@@ -10,6 +10,7 @@ import Image from "next/image";
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [userMsg, setUserMsg] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	const router = useRouter();
 
@@ -25,24 +26,31 @@ const Login = () => {
 		console.log("hi button");
 		e.preventDefault();
 
+
 		if (email) {
 			if (email == 'macauleymmx@gmail.com') {
 				try {
+					setIsLoading(true);
+
 					const didToken = await magic.auth.loginWithMagicLink({
 						email,
 					});
 					console.log({ didToken });
 					if (didToken) {
-						router.push('/')
+						setIsLoading(false);
+						router.push("/");
 					}
 				} catch (error) {
 					console.log("something went wrong logging in", error);
+					setIsLoading(false);
 				}
 			} else {
+				setIsLoading(false);
 				setUserMsg('Something went wrong logging in');
 			}
 		} else {
 			//show user message
+			setIsLoading(false);
 			setUserMsg("Enter a valid email address");
 		}
 	};
@@ -85,7 +93,7 @@ const Login = () => {
 					<button
 						onClick={handleLoginWithEmail}
 						className={styles.loginBtn}>
-						Sign In
+						{isLoading ? 'Loading..' : "Sign In"}
 					</button>
 				</div>
 			</main>
