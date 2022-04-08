@@ -1,4 +1,7 @@
 import { useRouter } from "next/router";
+import Modal from "react-modal";
+
+Modal.setAppElement("#__next");
 
 const Video = () => {
 	const router = useRouter();
