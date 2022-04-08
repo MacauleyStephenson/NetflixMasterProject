@@ -38,9 +38,11 @@ export default function Home({
 			<div className={styles.main}>
 				<NavBar username="MacauleyS@gmail.com" />
 				<Banner
+					videoId="4zH5iYM4wJo"
 					title='Clifford the Red Dog'
 					subTitle="A very cute dog!"
-					imgUrl="/static/clifford.webp" />
+					imgUrl="/static/clifford.webp"
+				/>
 				<div className={styles.sectionWrapper}>
 					<SectionCards
 						title="Disney"
