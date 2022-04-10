@@ -19,6 +19,7 @@ const Video = () => {
 				<div>
 					<iframe
 						id="player"
+						className={styles.videoPlayer}
 						type="text/html"
 						width="100%"
 						height="390"
