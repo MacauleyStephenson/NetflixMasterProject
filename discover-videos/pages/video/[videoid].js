@@ -20,9 +20,9 @@ const Video = () => {
 					<iframe
 						id="player"
 						type="text/html"
-						width="640"
+						width="100%"
 						height="390"
-						src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+						src={`http://www.youtube.com/embed/${router.query.videoId}?enablejsapi=1&origin=http://example.com&controls=0&rel=1`}
 						frameborder="0">
 					</iframe>
 				</div>
