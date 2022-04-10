@@ -6,7 +6,17 @@ Modal.setAppElement("#__next");
 
 const Video = () => {
 	const router = useRouter();
-	console.log({ router });
+
+	const video = {
+		title: 'Hi cute dog',
+		publishTime: '1990-01-01',
+		description: 'A big red dog that is super cute, can he get any bigger?',
+		channelTitle: 'Paramount Pictures',
+		viewCount: 10000,
+	};
+
+	const { title, publishTime, description, channelTitle, viewCount } = video;
+
 	return (
 		<div className={styles.container}>
 			<Modal
@@ -16,19 +26,31 @@ const Video = () => {
 				className={styles.modal}
 				overlayClassName={styles.overlay}
 			>
-				<div>
-					<iframe
-						id="player"
-						className={styles.videoPlayer}
-						type="text/html"
-						width="100%"
-						height="390"
-						src={`http://www.youtube.com/embed/${router.query.videoId}?enablejsapi=1&origin=http://example.com&controls=0&rel=1`}
-						frameborder="0">
-					</iframe>
-				</div>
-			</Modal>
-		</div>
+				<iframe
+					id="player"
+					className={styles.videoPlayer}
+					type="text/html"
+					width="100%"
+					height="390"
+					src={`http://www.youtube.com/embed/${router.query.videoId}?enablejsapi=1&origin=http://example.com&controls=0&rel=1`}
+					frameborder="0">
+				</iframe>
+
+				<div className={styles.modalBody}>
+					<div className={styles.modalBodyContent}>
+
+					</div>
+					<div className={styles.col1 >
+					<p className={styles.publishTime}>{publishTime}</p>
+					<p className={styles.publishTime}>{title}</p>
+					<p className={styles.description}>{description}</p>
+					</div>
+				<div className={styles.col2 >
+						</div>
+					</div >
+				</div >
+			</Modal >
+		</div >
 	);
 };
 
