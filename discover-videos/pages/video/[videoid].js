@@ -38,19 +38,25 @@ const Video = () => {
 
 				<div className={styles.modalBody}>
 					<div className={styles.modalBodyContent}>
-
-					</div>
-					<div className={styles.col1 >
-					<p className={styles.publishTime}>{publishTime}</p>
-					<p className={styles.publishTime}>{title}</p>
-					<p className={styles.description}>{description}</p>
-					</div>
-				<div className={styles.col2 >
+						<div className={styles.col1}>
+							<p className={styles.publishTime}>{publishTime}</p>
+							<p className={styles.title}>{title}</p>
+							<p className={styles.description}>{description}</p>
 						</div>
-					</div >
-				</div >
-			</Modal >
-		</div >
+						<div className={styles.col2}>
+							<p className={clsx(styles.subText, styles.subTextWrapper)}>
+								<span className={styles.textColor}>Cast: </span>
+								<span className={styles.channelTitle}>{channelTitle}</span>
+							</p>
+							<p className={clsx(styles.subText, styles.subTextWrapper)}>
+								<span className={styles.textColor}>View Count: </span>
+								<span className={styles.channelTitle}>{viewCount}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</Modal>
+		</div>
 	);
 };
 
