@@ -3,22 +3,30 @@ import Modal from "react-modal";
 import styles from '../../styles/Video.module.css';
 import clsx from "classnames";
 
+import { getYoutubeVideoById } from '../../lib/videos';
+
 Modal.setAppElement("#__next");
 
 export async function getStaticProps() {
 
 	//data to fetch from api
-	const video = {
-		title: 'Hi cute dog',
-		publishTime: '1990-01-01',
-		description: 'A big red dog that is super cute, can he get any bigger',
-		channelTitle: "Paramount Pictures",
-		viewCount: 10000,
-	};
+	// const video = {
+	// 	title: 'Hi cute dog',
+	// 	publishTime: '1990-01-01',
+	// 	description: 'A big red dog that is super cute, can he get any bigger',
+	// 	channelTitle: "Paramount Pictures",
+	// 	viewCount: 10000,
+	// };
+
+	const videoid = "4zH5iYM4wJo";
+
+	const videoArry = await getYoutubeVideoById(videoid);
+
+
 
 	return {
 		props: {
-			video,
+			video: videoArry.length > 0 ? videoArry[0] : {},
 		},
 		// Next.js will attempt to re-generate the page:
 		// - When a request comes in
