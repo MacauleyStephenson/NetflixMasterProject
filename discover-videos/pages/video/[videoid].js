@@ -1,19 +1,36 @@
 import { useRouter } from "next/router";
 import Modal from "react-modal";
 import styles from '../../styles/Video.module.css';
+import clsx from "classnames";
 
 Modal.setAppElement("#__next");
 
-const Video = () => {
-	const router = useRouter();
+export async function getStaticProps() {
 
+	//data to fetch from api
 	const video = {
 		title: 'Hi cute dog',
 		publishTime: '1990-01-01',
-		description: 'A big red dog that is super cute, can he get any bigger?',
-		channelTitle: 'Paramount Pictures',
+		description: 'A big red dog that is super cute, can he get any bigger',
+		channelTitle: "Paramount Pictures",
 		viewCount: 10000,
 	};
+
+	return {
+		props: {
+			video,
+		},
+		// Next.js will attempt to re-generate the page:
+		// - When a request comes in
+		// - At most once every 10 seconds
+		revalidate: 10, // In seconds
+	};
+}
+
+const Video = ({ video }) => {
+	const router = useRouter();
+
+
 
 	const { title, publishTime, description, channelTitle, viewCount } = video;
 
