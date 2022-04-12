@@ -27,6 +27,15 @@ export async function getStaticProps() {
 	};
 }
 
+export async function getStaticPaths() {
+	const listOfVideos = ["mYfJxlgR2jw", "4zH5iYM4wJo", "KCPEHsAViiQ"];
+	const paths = listOfVideos.map((videoid) => ({
+		params: { videoid },
+	}))
+
+	return { paths, fallback: 'blocking' }
+}
+
 const Video = ({ video }) => {
 	const router = useRouter();
 
@@ -49,7 +58,7 @@ const Video = ({ video }) => {
 					type="text/html"
 					width="100%"
 					height="390"
-					src={`http://www.youtube.com/embed/${router.query.videoId}?enablejsapi=1&origin=http://example.com&controls=0&rel=1`}
+					src={`http://www.youtube.com/embed/${router.query.videoid}?enablejsapi=1&origin=http://example.com&controls=0&rel=1`}
 					frameborder="0">
 				</iframe>
 
