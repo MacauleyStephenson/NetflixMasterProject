@@ -9,7 +9,7 @@ import { getYoutubeVideoById } from '../../lib/videos';
 
 Modal.setAppElement("#__next");
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
 
 	//data to fetch from api
 	// const video = {
@@ -20,7 +20,9 @@ export async function getStaticProps() {
 	// 	viewCount: 10000,
 	// };
 
-	const videoid = "4zH5iYM4wJo";
+	console.log({ context })
+
+	const videoid = context.params.videoid;
 
 	const videoArry = await getYoutubeVideoById(videoid);
 
@@ -51,7 +53,13 @@ const Video = ({ video }) => {
 
 
 
-	const { title, publishTime, description, channelTitle, statistics: { viewCount } } = video;
+	const {
+		title,
+		publishTime,
+		description,
+		channelTitle,
+		statistics: { viewCount } = { viewCount: 0 },
+	} = video;
 
 	return (
 		<div className={styles.container}>
