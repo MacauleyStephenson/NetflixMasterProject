@@ -22,11 +22,17 @@ export const getCommonVideos = async (url) => {
 		return data?.items.map(item => {
 			console.log({ id: item.id });
 			const id = item.id?.videoId || item.id;
+
+			const snippet = item.snippet;
 			return {
-				title: item.snippet?.title,
-				imgUrl: item.snippet.thumbnails.high.url,
+				title: snippet?.title,
+				imgUrl: snippet.thumbnails.high.url,
 				id,
-			}
+				description: snippet.description,
+				publishTime: snippet.publishedAt,
+				channelTitle: snippet.channelTitle,
+				statistics: item.statistics ? item.statistics : { viewCount: 0 },
+			};
 		});
 	} catch (error) {
 		console.log("something went wrong with Video Library", error);

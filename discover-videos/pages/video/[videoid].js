@@ -49,7 +49,7 @@ const Video = ({ video }) => {
 
 
 
-	const { title, publishTime, description, channelTitle, viewCount } = video;
+	const { title, publishTime, description, channelTitle, statistics: { viewCount } } = video;
 
 	return (
 		<div className={styles.container}>
