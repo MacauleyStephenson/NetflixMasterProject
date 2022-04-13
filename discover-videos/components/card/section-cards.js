@@ -14,8 +14,8 @@ const SectionCards = (props) => {
 					console.log('video.id', video.id)
 					return (
 						<Link href={`/video/${video.Id}`}>
-							<Card id={idx} imgUrl={video.imgUrl} size={size}
-							/>
+							<a><Card id={idx} imgUrl={video.imgUrl} size={size}
+							/></a>
 						</Link>
 					)
 				})}
