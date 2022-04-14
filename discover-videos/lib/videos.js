@@ -14,6 +14,7 @@ export const getCommonVideos = async (url) => {
 
 		const data = await response.json();
 
+		console.log({ data })
 		if (data?.error) {
 			console.error('youtube API error', data.error);
 			return [];
