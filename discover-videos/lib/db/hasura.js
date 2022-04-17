@@ -1,15 +1,10 @@
-/*
-This is an example snippet - you should consider tailoring it
-to your service.
-*/
-
-async function fetchGraphQL(operationsDoc, operationName, variables) {
+async function queryHasuraGQL(operationsDoc, operationName, variables) {
 	const result = await fetch(
-		"https://noted-coyote-73.hasura.app/v1/graphql",
+		process.env.HASURA_ADMIN_URL,
 		{
 			method: "POST",
 			headers: {
-				"x-hasura-admin-secret": "VzqUeo3W1N2LJHpOs2pI6FF9JxTqkKqNRYMIQ1uK9p0ta5tWclWBg9FheQxpwpRH",
+				"x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
 			},
 			body: JSON.stringify({
 				query: operationsDoc,
@@ -47,7 +42,7 @@ const operationsDoc = `
   `;
 
 function fetchMyQuery() {
-	return fetchGraphQL(
+	return queryHasuraGQL(
 		operationsDoc,
 		"MyQuery",
 		{}
@@ -55,7 +50,7 @@ function fetchMyQuery() {
 }
 
 function executeMyMutation() {
-	return fetchGraphQL(
+	return queryHasuraGQL(
 		operationsDoc,
 		"MyMutation",
 		{}
