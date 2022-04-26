@@ -35,3 +35,5 @@ export default async function login(req, res) {
 		res.send({ done: false });
 	}
 }
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Im1hYyIsImlhdCI6MTY1MDg3Mjk5NywiZXhwIjoxNjUxNDc3NzUyLCJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciIsImFkbWluIl0sIngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS11c2VyLWlkIjoibWFjIn19.Z6pMHUsPkGjASYPAixXt4qwPmu5i60c0_i_-ffYDWeA
