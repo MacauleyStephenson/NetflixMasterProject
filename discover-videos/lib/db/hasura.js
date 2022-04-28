@@ -4,6 +4,7 @@ async function queryHasuraGQL(operationsDoc, operationName, variables) {
 		{
 			method: "POST",
 			headers: {
+				"x-hasura-admin-secret": process.env.NEXT_PUBLIC_HASURA_ADMIN_SECRET,
 				Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Im1hYyIsImlhdCI6MTY1MDg3Mjk5NywiZXhwIjoxNjUxNDc3NzUyLCJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWFsbG93ZWQtcm9sZXMiOlsidXNlciIsImFkbWluIl0sIngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS11c2VyLWlkIjoibm90bWFjIiwieC1oYXN1cmEtb3JnLWlkIjoiMTIzIn19.Zpw9tsO3CyoYpnEH_h-iFbyEsZMW7Fg-9NvuJu5DJqI",
 			},
 			body: JSON.stringify({
