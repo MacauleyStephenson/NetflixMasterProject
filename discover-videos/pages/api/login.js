@@ -6,6 +6,8 @@ export default async function login(req, res) {
 		try {
 			const auth = req.headers.authorization;
 			const didToken = auth ? auth.substr(7) : "";
+			console.log({ didToken });
+
 			const metadata = await magicAdmin.users.getMetadataByToken(didToken);
 			console.log({ metadata });
 
@@ -21,7 +23,7 @@ export default async function login(req, res) {
 						"x-hasura-user-id": `${metadata.issuer}`,
 					},
 				},
-				"process.env.JWT_SECRET"
+				"thisisasecretthisisasecret1234567"
 			);
 			console.log({ token });
 
